@@ -123,6 +123,121 @@ public class Main {
     }
 
 
+    public int showPriorityQueueMenu() {
+        int optionPriorityQueue=0;
+
+        System.out.println(
+                "Game menu, please pick an option\n" +
+                        "(1) Look for the maximun value \n" +
+                        "(2) Add reminder with priority \n" +
+                        "(3) Extract reminder \n"+
+                        "(4) Increase key o priority of reminder \n"+
+                        "(5) Show elements \n"+
+                        "(0) Leave\n"
+        );
+        optionPriorityQueue= sc.nextInt();
+        sc.nextLine();
+        return optionPriorityQueue;
+    }
+
+
+    public void priorityQueueOperation(){
+
+        int optionPriorityQueue=0;
+
+        do{
+            optionPriorityQueue= showPriorityQueueMenu();
+            executeOperationPriorityQueue(optionPriorityQueue);
+
+        }while (optionPriorityQueue!=0);
+
+    }
+
+    public void executeOperationPriorityQueue(int operation) {
+
+        switch(operation) {
+            case 0:
+                System.out.println("Returning to the tittle!");
+                break;
+            case 1:
+                cll.showMaximunValue();
+                System.out.println("\n");
+                break;
+            case 2:
+                //cll.insertValue();
+                break;
+            case 3:
+                cll.extractValue();
+                break;
+            case 4:
+                incresePriority();
+                break;
+            case 5:
+                cll.showElements();
+                break;
+
+            default:
+                System.out.println("Error, wrong option");
+
+        }
+    }
+
+    //--------------------------------------------------------------------------------------\\
+
+
+    public int showQueueMenu() {
+        int optionQueue=0;
+
+        System.out.println(
+                "Game menu, please pick an option\n" +
+                        "(1) Show the reminder in the front \n" +
+                        "(2) Add reminder \n" +
+                        "(3) Delete reminder \n"+
+                        "(0) Leave\n"
+        );
+        optionQueue= sc.nextInt();
+        sc.nextLine();
+        return optionQueue;
+    }
+
+
+    public void queueOperation(){
+
+        int optionQueue=0;
+
+        do{
+            optionQueue= showQueueMenu();
+            executeOperationQueue(optionQueue);
+
+        }while (optionQueue!=0);
+
+    }
+
+    public void executeOperationQueue(int operation) {
+
+        switch(operation) {
+            case 0:
+                System.out.println("Returning to the tittle!");
+                break;
+            case 1:
+                cll.showQueueFront();
+                System.out.println("\n");
+                break;
+            case 2:
+                cll.enQueueFront();
+                break;
+            case 3:
+                cll.deQueueFront();
+
+                break;
+
+            default:
+                System.out.println("Error, wrong option");
+
+        }
+    }
+
+
     public void registerTaskAndReminders(){
 
         DateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy");
@@ -230,6 +345,24 @@ public class Main {
         System.out.println("To modify the reminder it is necessary to type the respective key");
         int key = sc.nextInt();
         cll.deleteReminders(key);
+    }
+
+
+    public void incresePriority(){
+        System.out.println("Type the key to look for the reminder");
+//        sc.nextLine();
+        int index = sc.nextInt();
+
+        System.out.println("Type the new priority for the reminder");
+//        sc.nextLine();
+        int priority = sc.nextInt();
+
+        System.out.println("Type the key for the reminder");
+//        sc.nextLine();
+        int key = sc.nextInt();
+
+        cll.increasePriority(index, priority, key);
+
     }
 
 

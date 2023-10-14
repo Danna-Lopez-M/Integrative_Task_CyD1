@@ -117,5 +117,70 @@ public class Controller {
         hash.hashDelete(key);
     }
 
+    public void showQueueFront(){
+        try {
+            System.out.println(queue.front().toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            queue.front();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void enQueueFront(){
+
+
+    }
+
+    public void deQueueFront(){
+        Reminder element = null;
+        try {
+            element = queue.front();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        hash.hashDelete(element.getKey());
+        queue.deQueue();
+    }
+
+    //--------------------------------------------------------------------------------------\\
+
+
+    public void showMaximunValue(){
+        System.out.println(pQueue.maximun());
+        pQueue.maximun();
+    }
+
+    public void insertValue(int priority, Reminder reminder){
+        pQueue.insert(priority, reminder);
+    }
+
+    public void extractValue(){
+        Reminder element = null;
+        element = pQueue.maximun();
+        System.out.println(pQueue.extractMax());
+        System.out.println("\n");
+        hash.hashDelete(element.getKey());
+
+
+    }
+
+    public void increasePriority(int index, int priority, int key){
+//        Reminder reminder = hash.hashSearch(index);
+//        PNode<Integer, Reminder> node = new PNode<>(reminder.getPriority(),reminder);
+
+        Reminder element = hash.hashSearch(key);
+        element.setPriority(priority);
+        pQueue.increaseKey(index, priority);
+    }
+
+
+    public void showElements(){
+        pQueue.showElements();
+    }
+
 
 }
