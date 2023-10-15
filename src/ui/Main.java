@@ -1,12 +1,9 @@
 package ui;
-
-
 import model.Controller;
-
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class Main {
 
@@ -20,6 +17,10 @@ public class Main {
         init = new Init();
         cll = init.testKeys();
     }
+
+
+    //--------------------------------------------------------------------------------------\\
+
 
     public static void main(String[] args) {
 
@@ -64,7 +65,6 @@ public class Main {
 
     //--------------------------------------------------------------------------------------\\
 
-
     public int showHashMenu() {
         int optionHash=0;
 
@@ -74,7 +74,7 @@ public class Main {
                         "(2) Modify reminder \n" +
                         "(3) Delete reminder \n"+
                         "(4) List by priority \n"+
-                        "(5) List by deadline \n"+
+                        "(5) Undo \n"+
                         "(0) Leave\n"
         );
         optionHash= sc.nextInt();
@@ -110,10 +110,13 @@ public class Main {
                 deleteTaskAndReminders();
                 break;
             case 4:
-                cll.priorityInOrder();
+                cll.showReminderList();
                 break;
             case 5:
-                System.out.println();
+                cll.undo();
+                break;
+            case 6:
+                //
                 break;
 
             default:
@@ -122,6 +125,8 @@ public class Main {
         }
     }
 
+
+    //--------------------------------------------------------------------------------------\\
 
     public int showPriorityQueueMenu() {
         int optionPriorityQueue=0;
@@ -133,6 +138,7 @@ public class Main {
                         "(3) Extract reminder \n"+
                         "(4) Increase key o priority of reminder \n"+
                         "(5) Show elements \n"+
+                        "(6) Undo \n"+
                         "(0) Leave\n"
         );
         optionPriorityQueue= sc.nextInt();
@@ -175,6 +181,9 @@ public class Main {
             case 5:
                 cll.showElements();
                 break;
+            case 6:
+                cll.undo();
+                break;
 
             default:
                 System.out.println("Error, wrong option");
@@ -193,6 +202,7 @@ public class Main {
                         "(1) Show the reminder in the front \n" +
                         "(2) Add reminder \n" +
                         "(3) Delete reminder \n"+
+                        "(4) Undo \n"+
                         "(0) Leave\n"
         );
         optionQueue= sc.nextInt();
@@ -228,7 +238,9 @@ public class Main {
                 break;
             case 3:
                 cll.deQueueFront();
-
+                break;
+            case 4:
+                cll.undo();
                 break;
 
             default:
@@ -236,6 +248,10 @@ public class Main {
 
         }
     }
+
+
+    //--------------------------------------------------------------------------------------\\
+
 
 
     public void registerTaskAndReminders(){
@@ -266,6 +282,7 @@ public class Main {
         }
 
         System.out.println("Does the reminder has a priority?");
+        System.out.println("Type 'yes' if the answer is true and anything else if doesnt");
         String answer = sc.next();
 
 
@@ -273,18 +290,20 @@ public class Main {
         if(answer.equals("yes")){
             System.out.println("Type the priority of the reminder");
             System.out.println(
-                    "How important the task or reminder is? " +
-                            "(1) Very important  \n" +
-                            "(2) Important  \n"+
+                    "How important the task or reminder is? \n " +
+                            "(5) Very important  \n" +
+                            "(4) Important  \n"+
                             "(3) Considerable  \n"+
-                            "(4) Less important  \n"+
-                            "(5) Not very important \n"
+                            "(2) Less important  \n"+
+                            "(1) Not very important \n"
             );
             priority = sc.nextInt();
             cll.registerReminders(title,description,deadline,priority,key);
         }else{
             cll.registerReminders(title,description,deadline,priority,key);
         }
+
+
     }
 
 
@@ -364,6 +383,7 @@ public class Main {
         cll.increasePriority(index, priority, key);
 
     }
+
 
 
 }
