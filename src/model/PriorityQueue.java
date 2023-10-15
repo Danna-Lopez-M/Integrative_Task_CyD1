@@ -19,12 +19,13 @@ public class PriorityQueue<T> implements IPriorityQueue<T>, IHeap<T> {
 //    private Prioritizeable[] array;
     private int heapSize;
 
-    public static int size = -1;
+    public int size;
 
     public PriorityQueue() {
 //        array =(T[]) new Object [ARRAY_SIZE];
         array = new PNode [ARRAY_SIZE];
 //        array = new Prioritizeable [ARRAY_SIZE];
+        size=-1;
     }
 
 
@@ -123,7 +124,7 @@ public class PriorityQueue<T> implements IPriorityQueue<T>, IHeap<T> {
     }
 
     @Override
-    public T extractMax(){
+    public T extractMax() throws Exception {
         //buildHeap();
         PNode<T> max = null;
         if(size<0){
@@ -134,7 +135,11 @@ public class PriorityQueue<T> implements IPriorityQueue<T>, IHeap<T> {
             size = size-1;
             heapify(0);
         }
-        return  max.getElement();
+        if(max!=null) {
+            return max.getElement();
+        }else {
+            throw new Exception("There is no element");
+        }
     }
 
     @Override

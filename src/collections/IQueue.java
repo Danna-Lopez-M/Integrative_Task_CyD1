@@ -8,6 +8,6 @@ public interface IQueue<T extends Comparable<T>> {
 
     public T deQueue();
 
-    public T front();
+    public T front() throws Exception;
 
 }

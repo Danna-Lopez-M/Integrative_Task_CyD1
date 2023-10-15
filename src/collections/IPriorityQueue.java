@@ -6,7 +6,7 @@ public interface IPriorityQueue <T> {
 
     public T maximun();
 
-    public T extractMax();
+    public T extractMax() throws Exception;
 
     public void increaseKey(int index, int priority);
 

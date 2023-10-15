@@ -48,8 +48,12 @@ public class Queue<T extends Comparable<T>> implements IQueue<T> {
     }
 
     @Override
-    public T front(){
-        return first.getElement();
+    public T front() throws Exception {
+        if(first.getElement()!=null){
+            return first.getElement();
+        }else {
+            throw new Exception("There is no element");
+        }
     }
 
 }

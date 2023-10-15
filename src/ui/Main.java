@@ -55,9 +55,9 @@ public class Main {
 
         switch (operation) {
             case 0 -> System.out.println("Bye!");
-            case 1 -> System.out.println(1);
-            case 2 -> System.out.println(2);
-            case 3 -> System.out.println(3);
+            case 1 -> hashOperation();
+            case 2 -> priorityQueueOperation();
+            case 3 -> queueOperation();
             default -> System.out.println("Error, wrong option");
         }
     }

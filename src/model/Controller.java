@@ -161,7 +161,11 @@ public class Controller {
     public void extractValue(){
         Reminder element = null;
         element = pQueue.maximun();
-        System.out.println(pQueue.extractMax());
+        try {
+            System.out.println(pQueue.extractMax());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         System.out.println("\n");
         hash.hashDelete(element.getKey());
 
