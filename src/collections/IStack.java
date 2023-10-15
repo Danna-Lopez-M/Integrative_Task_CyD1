@@ -8,6 +8,6 @@ public interface IStack <T extends Comparable<T>> {
 
     public T pop();
 
-    public T top();
+    public T top() throws Exception;
 
 }

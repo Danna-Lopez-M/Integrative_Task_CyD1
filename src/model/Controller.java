@@ -46,7 +46,7 @@ public class Controller  {
     }
 
     public void showReminderList(){
-        int count = 1;
+        int count = 0;
         for (int i = 0; i<reminders.size();i++){
             System.out.println("The index of the element is: " + count);
             System.out.println(reminders.get(i));
@@ -168,7 +168,6 @@ public class Controller  {
         //pQueue.maximun();
     }
 
-
     public void extractValue(){
         Reminder element = null;
         element = pQueue.maximun();
@@ -248,5 +247,6 @@ public class Controller  {
                 }
                 break;
         }
+
     }
 }

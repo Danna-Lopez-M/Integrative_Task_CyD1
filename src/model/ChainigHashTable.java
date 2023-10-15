@@ -23,6 +23,10 @@ public class ChainigHashTable<K extends Comparable<K>, V> implements IHashTable<
 
         result = Math.floor(ARRAY_SIZE*result);
 
+        if(result<0){
+            result = result*-1;
+        }
+
         return (int) result;
     }
 

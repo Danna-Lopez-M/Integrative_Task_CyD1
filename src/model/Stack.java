@@ -1,5 +1,4 @@
 package model;
-
 import collections.IStack;
 
 public class Stack <T extends Comparable<T>> implements IStack<T> {
@@ -24,8 +23,18 @@ public class Stack <T extends Comparable<T>> implements IStack<T> {
     @Override
     public void push(T element){
         SNode<T> node = new SNode<>(element);
-        top.setNext(node);
-        node=top;
+        if(top==null){
+            top=node;
+        }else{
+            node.setNext(top);
+            top = node;
+        }
+//        if(top.getNext()!=null){
+//            top.setNext(node);
+//            top=node;
+//        }else {
+//            top=node;
+//        }
     }
 
     @Override
@@ -40,10 +49,12 @@ public class Stack <T extends Comparable<T>> implements IStack<T> {
     }
 
     @Override
-    public T top(){
+    public T top() throws Exception {
         T element = null;
         if(!isEmpty()){
             element=top.getElement();
+        }else {
+            throw new Exception("There is no element");
         }
 
         return element;

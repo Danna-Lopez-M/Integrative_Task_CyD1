@@ -196,7 +196,7 @@ public class Main {
         System.out.println(
                 "Game menu, please pick an option\n" +
                         "(1) Show the reminder in the front \n" +
-                        "(2) Delete reminder \n"+
+                        "(2) deQueue reminder \n"+
                         "(3) Undo \n"+
                         "(0) Leave\n"
         );
@@ -247,12 +247,6 @@ public class Main {
 
 
     public void registerTaskAndReminders(){
-
-        DateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy");
-
-        String actualDate = dateFormat.format(new Date());
-
-        System.out.println(actualDate);
 
         System.out.println("Type the title of the reminder");
         String title = sc.nextLine();
