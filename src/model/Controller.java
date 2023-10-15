@@ -188,6 +188,8 @@ public class Controller  {
         Reminder element = hash.hashSearch(key);
         element.setPriority(priority);
         pQueue.increaseKey(index, priority);
+        organizeReminders();
+
     }
 
 

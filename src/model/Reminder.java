@@ -65,8 +65,8 @@ public class Reminder implements Comparable<Reminder>, Prioritizeable {
         String out = "**** Reminder Content ****\n" +
                 "Title: " + title + "\n" +
                 "Description: " + description + "\n" +
-                "Description: " + deadline + "\n" +
-                "Deadline: " + key + "\n";
+                "DeadLine: " + deadline + "\n" +
+                "Key: " + key + "\n";
 
 
         if (priority == 1) {

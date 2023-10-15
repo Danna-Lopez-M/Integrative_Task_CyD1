@@ -354,7 +354,10 @@ public class Main {
 
 
     public void incresePriority(){
-        System.out.println("Type the key to look for the reminder");
+
+        cll.showReminderList();
+
+        System.out.println("Type the index to look for the reminder");
 //        sc.nextLine();
         int index = sc.nextInt();
 
@@ -367,6 +370,8 @@ public class Main {
         int key = sc.nextInt();
 
         cll.increasePriority(index, priority, key);
+
+        cll.showReminderList();
 
     }
 
