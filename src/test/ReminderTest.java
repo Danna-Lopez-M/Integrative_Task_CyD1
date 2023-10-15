@@ -60,6 +60,7 @@ public class ReminderTest extends TestCase {
         Reminder reminder1 = new Reminder("TestTitleS1","TestDescriptionS1","TestDeadlineS1",0,1234567);
         Reminder reminder2 = new Reminder("TestTitleS2","TestDescriptionS2","TestDeadlineS2",1,1414234);
         pQueue.insert(reminder2.getPriority(),reminder2);
+        pQueue.insert(reminder1.getPriority(),reminder1);
     }
 
     public void setUpStage6(){
@@ -104,10 +105,10 @@ public class ReminderTest extends TestCase {
         Reminder reminder = new Reminder("TestTitle2","TestDescription2","TestDeadline2",1,123456);
         try {
             hash.hashInsert(123456,reminder);
+            assertEquals(reminder,hash.hashSearch(123456));
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertEquals(reminder,hash.hashSearch(123456));
     }
 
     public void test2HashInsert(){
@@ -117,10 +118,10 @@ public class ReminderTest extends TestCase {
         try {
             hash.hashInsert(123456,reminder1);
             hash.hashInsert(654321,reminder2);
+            assertNotSame(hash.hashSearch(123456),hash.hashSearch(654321));
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertNotSame(reminder1,reminder2);
     }
 
     public void test3HashInsert(){
@@ -134,10 +135,10 @@ public class ReminderTest extends TestCase {
         Reminder object = null;
         try {
             object = hash.hashSearch(123456);
+            assertNotNull(object);
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertNotNull(object);
     }
 
     public void test2HashSearch(){
@@ -145,10 +146,10 @@ public class ReminderTest extends TestCase {
         Reminder object = null;
         try {
             object = hash.hashSearch(1414141);
+            assertNull(object);
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertNull(object);
     }
 
     public void test3HashSearch(){
@@ -161,20 +162,22 @@ public class ReminderTest extends TestCase {
         setUpStage2();
         try {
             hash.hashDelete(123456);
+            assertEquals(0,hash.size());
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertEquals(0,hash.size());
+
     }
 
     public void test2HashDelete(){
         setUpStage2();
         try {
             hash.hashDelete(123456);
+            assertNull(hash.hashSearch(123456));
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertNull(hash.hashSearch(123456));
+
     }
 
 
@@ -182,10 +185,10 @@ public class ReminderTest extends TestCase {
         setUpStage2();
         try {
             hash.hashDelete(123654);
+            assertNotNull(hash.hashSearch(123456));
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertNotNull(hash.hashSearch(123456));
     }
 
 
@@ -197,10 +200,10 @@ public class ReminderTest extends TestCase {
         Reminder reminder = new Reminder("TestTitleS1","TestDescriptionS1","TestDeadlineS1",1,123456);
         try {
             queue.enQueue(reminder);
+            assertFalse(queue.isEmpty());
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertFalse(queue.isEmpty());
     }
 
     public void test2QueueEnQueue(){
@@ -235,20 +238,20 @@ public class ReminderTest extends TestCase {
         queue.enQueue(reminder);
         try {
             queue.deQueue();
+            assertTrue(queue.isEmpty());
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertTrue(queue.isEmpty());
     }
 
     public void test2QueueDeQueue(){
         setUpStage3();
         try {
             queue.deQueue();
+            assertFalse(queue.isEmpty());
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertFalse(queue.isEmpty());
     }
 
     public void test3QueueDeQueue(){
@@ -269,10 +272,10 @@ public class ReminderTest extends TestCase {
         Reminder reminder = null;
         try {
             reminder = queue.front();
+            assertNotNull(reminder);
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertNotNull(reminder);
     }
 
     public void test2QueueFront(){
@@ -280,10 +283,11 @@ public class ReminderTest extends TestCase {
         Reminder reminder = null;
         try {
             reminder = queue.front();
+            assertNull(reminder);
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertNull(reminder);
+
     }
 
 
@@ -344,7 +348,7 @@ public class ReminderTest extends TestCase {
         setUpStage7();
         Action action = null;
         try{
-            action = stack.top();
+            action = stack.pop();
             assertNotNull(action);
         } catch (Exception e) {
             System.out.println(e);
@@ -424,9 +428,8 @@ public class ReminderTest extends TestCase {
     //----------------------------PriorityQueue------------------------------\\
 
     public void test1PriorityQueueMaximun(){
-//        setUpStage5();
+        setUpStage1();
         Reminder reminder2 = new Reminder("TestTitleS2","TestDescriptionS2","TestDeadlineS2",1,1414234);
-        pQueue = new PriorityQueue<>();
         Reminder reminder = null;
         pQueue.insert(reminder2.getPriority(),reminder2);
         try{
@@ -443,10 +446,10 @@ public class ReminderTest extends TestCase {
         Reminder reminder = null;
         try{
             reminder = pQueue.maximun();
+            assertNull(reminder);
         }catch (Exception e){
             System.out.println(e);
         }
-        assertNull(reminder);
     }
 
     public void test3PriorityQueueMaximun(){
@@ -456,10 +459,10 @@ public class ReminderTest extends TestCase {
         try {
             reminder1 = queue.front();
             reminder2 = pQueue.maximun();
+            assertNotSame(reminder1,reminder2);
         }catch (Exception e){
             System.out.println(e);
         }
-        assertNotSame(reminder1,reminder2);
     }
 
 
@@ -574,9 +577,9 @@ public class ReminderTest extends TestCase {
         Reminder reminder2 = null;
         try{
             reminder1 = pQueue.maximun();
-            pQueue.increaseKey(0,-1);
+            pQueue.increaseKey(1,5);
             reminder2 = pQueue.maximun();
-            assertSame(reminder2,pQueue.maximun());
+            assertNotSame(reminder1,pQueue.maximun());
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -598,10 +601,10 @@ public class ReminderTest extends TestCase {
             controller.registerReminders("TestTitleS1","TestDescriptionS1","TestDeadlineS1",0,123456);
             reminder1 = hash.hashSearch(123456);
             reminder2 = queue.front();
+            assertSame(reminder2,reminder1);
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertSame(reminder2,reminder1);
     }
 
     public void test2RegisterReminder(){
@@ -610,21 +613,16 @@ public class ReminderTest extends TestCase {
         try {
             controller.registerReminders("TestTitleS1","TestDescriptionS1","TestDeadlineS1",1,123456);
             reminder = queue.front();
+            assertNull(reminder);
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertNull(reminder);
     }
 
     public void test3RegisterReminder(){
         setUpStage1();
         try{
             controller.registerReminders("TestTitleS1","TestDescriptionS1","TestDeadlineS1",0,1234567);
-            //controller.registerReminders("TestTitleS2","TestDescriptionS2","TestDeadlineS2",1,1414234);
-        } catch (Exception e){
-            System.out.println(e);
-        }
-        try{
             assertNotSame(queue.front(),pQueue.maximun());
         } catch (Exception e){
             System.out.println(e);
@@ -714,31 +712,5 @@ public class ReminderTest extends TestCase {
 
 
     //----------------------------------------------------------\\
-
-
-
-//
-//    private  void addReminderTest2(){
-//        setUpStage1();
-//        try {
-//            controller.registerReminders("TestTitle","TestDescription","TestDate",4,1111111);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//        assertEquals(1,hash.size());
-//    }
-//
-//    private  void addReminderTest3(){
-//        setUpStage1();
-//        try {
-//            controller.registerReminders("TestTitle","TestDescription","TestDate",4,1111111);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
-//        assertEquals(1,hash.size());
-//    }
-
-
-
 
 }

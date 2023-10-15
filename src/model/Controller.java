@@ -57,38 +57,6 @@ public class Controller  {
 
 
 
-//    public void priorityInOrder(){
-//        if(!keyArray.isEmpty()){
-//            //Reminder[] objectArray;
-//            ArrayList<Reminder> priorityArray = new ArrayList<>();
-//            for (int i = 0; i<keyArray.size();i++){
-//                    priorityArray.add(hash.hashSearch(keyArray.get(i)));
-//                    //System.out.println(priorityArray.get(i));
-//            }
-//
-//            for(int i = 0; i<priorityArray.size();i++){
-//                for (int j = 1; j<priorityArray.size()-i;j++){
-//                    Reminder anterior = priorityArray.get(j-1);
-//                    Reminder actual = priorityArray.get(j);
-//                    if(priorityArray.get(j-1)!=null && priorityArray.get(j)!=null){
-//                        if(priorityArray.get(j-1).getPriority()>priorityArray.get(j).getPriority()){
-//                            priorityArray.set(j,anterior);
-//                            priorityArray.set(j-1,actual);
-//                        }
-//                   }
-//               }
-//           }
-//            int count = 1;
-//            for (int i = 0; i<priorityArray.size();i++){
-//                System.out.println("The index of the element is: " + count);
-//                System.out.println(priorityArray.get(i));
-//                System.out.println("\n");
-//                count++;
-//            }
-//        }
-//    }
-
-
     public boolean keyVerification(Integer key){
         Integer processedKey = key;
         boolean flag = false;
@@ -180,10 +148,6 @@ public class Controller  {
         }
     }
 
-    public void enQueueFront(){
-
-
-    }
 
     public void deQueueFront(){
         Reminder element = null;
@@ -201,12 +165,9 @@ public class Controller  {
 
     public void showMaximunValue(){
         System.out.println(pQueue.maximun());
-        pQueue.maximun();
+        //pQueue.maximun();
     }
 
-    public void insertValue(int priority, Reminder reminder){
-        pQueue.insert(priority, reminder);
-    }
 
     public void extractValue(){
         Reminder element = null;
@@ -225,7 +186,6 @@ public class Controller  {
     public void increasePriority(int index, int priority, int key){
 //        Reminder reminder = hash.hashSearch(index);
 //        PNode<Integer, Reminder> node = new PNode<>(reminder.getPriority(),reminder);
-
         Reminder element = hash.hashSearch(key);
         element.setPriority(priority);
         pQueue.increaseKey(index, priority);
@@ -288,12 +248,5 @@ public class Controller  {
                 }
                 break;
         }
-
-        // Implementa la lógica para revertir la acción en función de la descripción
-        // Por ejemplo, si la descripción es "Agregar tarea", entonces deshace la adición de la tarea.
-        // Si la descripción es "Modificar tarea", revierte la modificación de la tarea.
-        // Agrega la lógica correspondiente para las acciones que puedas realizar en tu sistema.
-
-//        System.out.println("Deshaciendo: " + descripcion);
     }
 }

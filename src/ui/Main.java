@@ -134,11 +134,10 @@ public class Main {
         System.out.println(
                 "Game menu, please pick an option\n" +
                         "(1) Look for the maximun value \n" +
-                        "(2) Add reminder with priority \n" +
-                        "(3) Extract reminder \n"+
-                        "(4) Increase key o priority of reminder \n"+
-                        "(5) Show elements \n"+
-                        "(6) Undo \n"+
+                        "(2) Extract reminder \n"+
+                        "(3) Increase key o priority of reminder \n"+
+                        "(4) Show elements \n"+
+                        "(5) Undo \n"+
                         "(0) Leave\n"
         );
         optionPriorityQueue= sc.nextInt();
@@ -170,18 +169,15 @@ public class Main {
                 System.out.println("\n");
                 break;
             case 2:
-                //cll.insertValue();
-                break;
-            case 3:
                 cll.extractValue();
                 break;
-            case 4:
+            case 3:
                 incresePriority();
                 break;
-            case 5:
+            case 4:
                 cll.showElements();
                 break;
-            case 6:
+            case 5:
                 cll.undo();
                 break;
 
@@ -200,9 +196,8 @@ public class Main {
         System.out.println(
                 "Game menu, please pick an option\n" +
                         "(1) Show the reminder in the front \n" +
-                        "(2) Add reminder \n" +
-                        "(3) Delete reminder \n"+
-                        "(4) Undo \n"+
+                        "(2) Delete reminder \n"+
+                        "(3) Undo \n"+
                         "(0) Leave\n"
         );
         optionQueue= sc.nextInt();
@@ -234,12 +229,9 @@ public class Main {
                 System.out.println("\n");
                 break;
             case 2:
-                cll.enQueueFront();
-                break;
-            case 3:
                 cll.deQueueFront();
                 break;
-            case 4:
+            case 3:
                 cll.undo();
                 break;
 
